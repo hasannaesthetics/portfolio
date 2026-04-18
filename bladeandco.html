@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blade & Co. — Premier Barbershop Singapore</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --black:#0d0907;
+      --dark:#160f0a;
+      --brown:#2a1a10;
+      --gold:#c8a96e;
+      --gold2:#e8d5b0;
+      --cream:#f5efe6;
+      --white:#faf8f5;
+      --muted:#8a7060;
+      --text:#1a120a;
+    }
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--text);overflow-x:hidden}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(13,9,7,0.95);backdrop-filter:blur(16px)}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--gold);text-decoration:none;letter-spacing:2px;text-transform:uppercase}
+    .nav-links{display:flex;gap:2.5rem;list-style:none}
+    .nav-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:0.78rem;letter-spacing:2px;text-transform:uppercase;font-weight:500;transition:color 0.3s}
+    .nav-links a:hover{color:var(--gold)}
+    .nav-cta{background:var(--gold);color:var(--black);padding:0.6rem 1.4rem;border-radius:0;font-size:0.78rem;font-weight:600;text-decoration:none;letter-spacing:1.5px;text-transform:uppercase;transition:all 0.3s}
+    .nav-cta:hover{background:var(--gold2)}
+
+    /* HERO */
+    .hero{min-height:100vh;background:var(--dark);display:flex;align-items:center;position:relative;overflow:hidden}
+    .hero-bg-text{position:absolute;font-family:'Cormorant Garamond',serif;font-size:28vw;font-weight:700;color:rgba(200,169,110,0.04);top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;letter-spacing:-5px;pointer-events:none;user-select:none}
+    .hero-stripe{position:absolute;left:3rem;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,transparent,var(--gold) 20%,var(--gold) 80%,transparent)}
+    .hero-content{position:relative;z-index:2;max-width:1200px;margin:0 auto;width:100%;padding:0 3rem;display:grid;grid-template-columns:1.1fr 1fr;gap:4rem;align-items:center;padding-top:80px}
+    .hero-eyebrow{font-size:0.72rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
+    .hero-eyebrow::before{content:'';width:30px;height:1px;background:var(--gold)}
+    .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,8vw,6.5rem);color:var(--white);line-height:0.95;letter-spacing:-1px;margin-bottom:1.5rem;font-weight:600}
+    .hero-title em{color:var(--gold);font-style:italic}
+    .hero-divider{width:60px;height:1px;background:var(--gold);margin:1.5rem 0}
+    .hero-sub{font-size:0.95rem;color:rgba(255,255,255,0.5);line-height:1.8;font-weight:300;margin-bottom:2.5rem;max-width:400px}
+    .hero-actions{display:flex;gap:1rem}
+    .btn{padding:0.9rem 2.2rem;font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:600;text-decoration:none;letter-spacing:1.5px;text-transform:uppercase;transition:all 0.3s;display:inline-flex;align-items:center;gap:0.6rem;cursor:pointer;border:none}
+    .btn-gold{background:var(--gold);color:var(--black)}
+    .btn-gold:hover{background:var(--gold2)}
+    .btn-border{border:1px solid rgba(200,169,110,0.4);color:var(--gold);background:transparent}
+    .btn-border:hover{border-color:var(--gold);background:rgba(200,169,110,0.05)}
+
+    /* Hero visual */
+    .hero-visual{position:relative}
+    .barber-frame{border:1px solid rgba(200,169,110,0.2);padding:2.5rem;position:relative}
+    .barber-frame::before{content:'';position:absolute;top:-8px;left:-8px;right:8px;bottom:8px;border:1px solid rgba(200,169,110,0.1)}
+    .services-list{display:flex;flex-direction:column;gap:1px;background:rgba(200,169,110,0.1)}
+    .service-item{background:var(--dark);padding:1.2rem 1.5rem;display:flex;justify-content:space-between;align-items:center;transition:background 0.3s;cursor:default}
+    .service-item:hover{background:#1f1510}
+    .service-item-left{display:flex;align-items:center;gap:1rem}
+    .service-num{font-size:0.65rem;color:var(--gold);letter-spacing:2px;font-weight:600;opacity:0.6}
+    .service-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--white);font-weight:600}
+    .service-duration{font-size:0.72rem;color:var(--muted);margin-top:0.1rem}
+    .service-price{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--gold)}
+    .frame-footer{margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(200,169,110,0.15);display:flex;justify-content:space-between;align-items:center}
+    .frame-label{font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+    .frame-slots{display:flex;gap:0.4rem}
+    .slot{padding:0.3rem 0.7rem;border:1px solid rgba(200,169,110,0.25);font-size:0.7rem;color:var(--gold);letter-spacing:1px}
+    .slot.taken{opacity:0.3;text-decoration:line-through}
+
+    /* SECTIONS */
+    section{padding:7rem 3rem}
+    .section-wrap{max-width:1200px;margin:0 auto}
+    .label{font-size:0.68rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:1rem;display:flex;align-items:center;gap:0.8rem}
+    .label::before{content:'';width:20px;height:1px;background:var(--gold)}
+    .title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.5rem);color:var(--text);line-height:1.1;letter-spacing:-0.5px;margin-bottom:1rem;font-weight:600}
+
+    /* ABOUT */
+    #about{background:var(--cream)}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:4rem}
+    .about-text p{font-size:0.95rem;color:#5a4535;line-height:1.85;font-weight:300;margin-bottom:1.2rem}
+    .about-text p strong{color:var(--text);font-weight:600}
+    .about-stats{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(200,169,110,0.2)}
+    .a-stat{background:var(--white);padding:2rem;text-align:center}
+    .a-num{font-family:'Cormorant Garamond',serif;font-size:3rem;color:var(--gold);line-height:1;font-weight:600}
+    .a-lbl{font-size:0.75rem;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-top:0.3rem}
+
+    /* SERVICES */
+    #services{background:var(--white)}
+    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(200,169,110,0.15);margin-top:4rem}
+    .svc{background:var(--white);padding:2.5rem 2rem;transition:background 0.3s}
+    .svc:hover{background:#fdf9f4}
+    .svc-icon{font-size:1.5rem;margin-bottom:1.2rem}
+    .svc h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;margin-bottom:0.5rem;color:var(--text)}
+    .svc p{font-size:0.85rem;color:var(--muted);line-height:1.65}
+    .svc-price{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--gold);margin-top:1rem;font-weight:600}
+
+    /* BOOKING */
+    #booking{background:var(--dark);color:white}
+    .booking-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-top:4rem}
+    .booking-info .label::before{background:var(--gold)}
+    .booking-info .title{color:var(--white)}
+    .booking-info p{color:rgba(255,255,255,0.5);font-size:0.9rem;line-height:1.8;font-weight:300;margin-top:1rem;margin-bottom:2rem}
+    .info-items{display:flex;flex-direction:column;gap:1rem}
+    .info-item{display:flex;align-items:flex-start;gap:1rem;padding:1rem 1.2rem;border:1px solid rgba(200,169,110,0.15)}
+    .info-icon{color:var(--gold);font-size:1.1rem;flex-shrink:0;margin-top:0.1rem}
+    .info-text strong{display:block;font-size:0.85rem;color:var(--white);margin-bottom:0.2rem}
+    .info-text span{font-size:0.8rem;color:rgba(255,255,255,0.45)}
+    .booking-form{background:rgba(255,255,255,0.03);border:1px solid rgba(200,169,110,0.15);padding:2.5rem}
+    .form-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--gold);margin-bottom:1.5rem;font-weight:600}
+    .f-group{margin-bottom:1.2rem}
+    .f-group label{display:block;font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:0.5rem}
+    .f-group input,.f-group select{width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(200,169,110,0.2);padding:0.85rem 1rem;color:white;font-family:'DM Sans',sans-serif;font-size:0.9rem;outline:none;transition:border-color 0.3s;-webkit-appearance:none}
+    .f-group input:focus,.f-group select:focus{border-color:rgba(200,169,110,0.5)}
+    .f-group select option{background:#160f0a}
+    .form-submit{width:100%;padding:1rem;background:var(--gold);color:var(--black);border:none;font-family:'DM Sans',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;margin-top:0.5rem;transition:all 0.3s}
+    .form-submit:hover{background:var(--gold2)}
+
+    /* FOOTER */
+    footer{background:var(--black);padding:3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+    .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--gold);letter-spacing:3px;text-transform:uppercase}
+    .footer-copy{font-size:0.75rem;color:rgba(255,255,255,0.25)}
+    .back-link{font-size:0.75rem;color:rgba(255,255,255,0.35);text-decoration:none;letter-spacing:1px;transition:color 0.3s}
+    .back-link:hover{color:var(--gold)}
+
+    @media(max-width:1024px){
+      .hero-content{grid-template-columns:1fr}
+      .hero-visual{display:none}
+      .about-grid,.booking-grid{grid-template-columns:1fr;gap:3rem}
+    }
+    @media(max-width:768px){
+      nav{padding:1rem 1.5rem}
+      .nav-links{display:none}
+      section{padding:5rem 1.5rem}
+      .hero{padding:0}
+      .hero-content{padding:0 1.5rem;padding-top:80px}
+      .services-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Blade & Co.</a>
+  <ul class="nav-links">
+    <li><a href="#about">Our Story</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#booking">Book</a></li>
+  </ul>
+  <a href="#booking" class="nav-cta">Book Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-text">B&C</div>
+  <div class="hero-stripe"></div>
+  <div class="hero-content">
+    <div>
+      <div class="hero-eyebrow">Est. Singapore · 2019</div>
+      <h1 class="hero-title">The art of<br>the <em>perfect</em><br>cut.</h1>
+      <div class="hero-divider"></div>
+      <p class="hero-sub">A premium barbershop built on craft, precision, and respect for the old ways. Every cut is a statement.</p>
+      <div class="hero-actions">
+        <a href="#booking" class="btn btn-gold">Book a Cut</a>
+        <a href="#services" class="btn btn-border">Our Services</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="barber-frame">
+        <div class="services-list">
+          <div class="service-item">
+            <div class="service-item-left">
+              <div>
+                <div class="service-num">01</div>
+                <div class="service-name">Signature Cut</div>
+                <div class="service-duration">45 min</div>
+              </div>
+            </div>
+            <div class="service-price">$38</div>
+          </div>
+          <div class="service-item">
+            <div class="service-item-left">
+              <div>
+                <div class="service-num">02</div>
+                <div class="service-name">Cut & Beard</div>
+                <div class="service-duration">60 min</div>
+              </div>
+            </div>
+            <div class="service-price">$55</div>
+          </div>
+          <div class="service-item">
+            <div class="service-item-left">
+              <div>
+                <div class="service-num">03</div>
+                <div class="service-name">Hot Towel Shave</div>
+                <div class="service-duration">40 min</div>
+              </div>
+            </div>
+            <div class="service-price">$45</div>
+          </div>
+          <div class="service-item">
+            <div class="service-item-left">
+              <div>
+                <div class="service-num">04</div>
+                <div class="service-name">The Works</div>
+                <div class="service-duration">90 min</div>
+              </div>
+            </div>
+            <div class="service-price">$85</div>
+          </div>
+        </div>
+        <div class="frame-footer">
+          <div>
+            <div class="frame-label">Available Today</div>
+            <div class="frame-slots" style="margin-top:0.5rem">
+              <div class="slot taken">10:00</div>
+              <div class="slot">11:30</div>
+              <div class="slot">13:00</div>
+              <div class="slot taken">14:30</div>
+              <div class="slot">16:00</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-wrap">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="label">Our Story</div>
+        <h2 class="title">Where craft<br>meets character.</h2>
+        <p>Blade & Co. was born from a simple belief: <strong>a great haircut changes how you carry yourself.</strong> We opened our doors in Singapore in 2019, committed to delivering the kind of barbershop experience that's become rare — unhurried, skilled, and personal.</p>
+        <p>Every barber on our team has been trained in classic techniques, blended with modern styles. We don't rush. We listen. <strong>And we don't stop until it's right.</strong></p>
+        <div style="margin-top:2rem"><a href="#booking" class="btn btn-gold">Reserve Your Seat</a></div>
+      </div>
+      <div class="about-stats">
+        <div class="a-stat"><div class="a-num">6+</div><div class="a-lbl">Years in Business</div></div>
+        <div class="a-stat"><div class="a-num">4.9</div><div class="a-lbl">Star Rating</div></div>
+        <div class="a-stat"><div class="a-num">8K+</div><div class="a-lbl">Happy Clients</div></div>
+        <div class="a-stat"><div class="a-num">5</div><div class="a-lbl">Master Barbers</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-wrap">
+    <div class="label">What We Offer</div>
+    <h2 class="title">Every service,<br>done properly.</h2>
+    <div class="services-grid">
+      <div class="svc"><div class="svc-icon">✂️</div><h3>Signature Cut</h3><p>Our most popular service. A full consultation, precision cut, and styled finish with premium products.</p><div class="svc-price">From $38</div></div>
+      <div class="svc"><div class="svc-icon">🪒</div><h3>Hot Towel Shave</h3><p>A classic straight-razor shave with hot towel preparation. Smooth, close, and deeply relaxing.</p><div class="svc-price">From $45</div></div>
+      <div class="svc"><div class="svc-icon">🧔</div><h3>Beard Grooming</h3><p>Shape, trim and define. From full beards to sharp lines, we'll get it exactly how you want it.</p><div class="svc-price">From $25</div></div>
+      <div class="svc"><div class="svc-icon">👑</div><h3>The Works</h3><p>Cut, beard, hot towel shave, and a scalp massage. The full experience for when you deserve it.</p><div class="svc-price">From $85</div></div>
+      <div class="svc"><div class="svc-icon">🎨</div><h3>Hair Colour</h3><p>From natural blends to bold styles — our colouring service is precise and uses salon-grade products.</p><div class="svc-price">From $60</div></div>
+      <div class="svc"><div class="svc-icon">👦</div><h3>Junior Cut</h3><p>For boys under 12. Patient, fun, and always results in a sharp result that Mum will love too.</p><div class="svc-price">From $22</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div class="section-wrap">
+    <div class="booking-grid">
+      <div class="booking-info">
+        <div class="label">Reserve a Spot</div>
+        <h2 class="title" style="color:var(--white)">Book your<br>appointment.</h2>
+        <p>Walk-ins welcome, but we recommend booking to secure your preferred barber and time.</p>
+        <div class="info-items">
+          <div class="info-item"><div class="info-icon">📍</div><div class="info-text"><strong>Location</strong><span>12 Keong Saik Road, Singapore 089119</span></div></div>
+          <div class="info-item"><div class="info-icon">🕐</div><div class="info-text"><strong>Hours</strong><span>Tue–Sun: 10:00 AM – 8:00 PM. Closed Mondays.</span></div></div>
+          <div class="info-item"><div class="info-icon">📱</div><div class="info-text"><strong>WhatsApp</strong><span>+65 8100 0000</span></div></div>
+        </div>
+      </div>
+      <div class="booking-form">
+        <div class="form-title">Reserve Your Chair</div>
+        <div class="f-group"><label>Full Name</label><input type="text" placeholder="Your name"/></div>
+        <div class="f-group"><label>Phone Number</label><input type="tel" placeholder="+65 XXXX XXXX"/></div>
+        <div class="f-group">
+          <label>Service</label>
+          <select>
+            <option>Signature Cut — $38</option>
+            <option>Cut & Beard — $55</option>
+            <option>Hot Towel Shave — $45</option>
+            <option>The Works — $85</option>
+            <option>Beard Grooming — $25</option>
+          </select>
+        </div>
+        <div class="f-group"><label>Preferred Date</label><input type="date"/></div>
+        <div class="f-group">
+          <label>Preferred Time</label>
+          <select>
+            <option>10:00 AM</option>
+            <option>11:00 AM</option>
+            <option>12:00 PM</option>
+            <option>1:00 PM</option>
+            <option>2:00 PM</option>
+            <option>3:00 PM</option>
+            <option>4:00 PM</option>
+            <option>5:00 PM</option>
+            <option>6:00 PM</option>
+          </select>
+        </div>
+        <button class="form-submit" onclick="alert('Booking sent via WhatsApp! (Concept demo)')">Confirm Booking</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Blade & Co.</div>
+  <div class="footer-copy">© 2025 Blade & Co. Singapore. Concept design by Muhammad Hasan.</div>
+  <a href="index.html" class="back-link">← Back to Portfolio</a>
+</footer>
+
+</body>
+</html>
