@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hasan | Web Designer</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+    }
+
+    header {
+      padding: 60px 20px;
+      text-align: center;
+      background: linear-gradient(135deg, #2563eb, #1e293b);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .projects {
+      display: grid;
+      gap: 20px;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 12px;
+    }
+
+    a {
+      color: #60a5fa;
+      text-decoration: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Hasan</h1>
+  <p>I design clean, modern websites that convert</p>
+</header>
+
+<section>
+  <h2>About Me</h2>
+  <p>
+    I'm a web designer focused on building fast, responsive, and high-converting websites.
+    I specialize in clean UI, mobile-first design, and simple user experiences.
+  </p>
+</section>
+
+<section>
+  <h2>Projects</h2>
+
+  <div class="projects">
+
+    <div class="card">
+      <h3>Laundry Service Website</h3>
+      <p>Designed a premium laundry service website targeting high-income families.</p>
+      <a href="#">View Project</a>
+    </div>
+
+    <div class="card">
+      <h3>E-commerce Landing Page</h3>
+      <p>Built a modern landing page optimized for conversions and mobile users.</p>
+      <a href="#">View Project</a>
+    </div>
+
+    <div class="card">
+      <h3>Personal Brand Portfolio</h3>
+      <p>Created a sleek personal branding site with strong UI/UX focus.</p>
+      <a href="#">View Project</a>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2>Skills</h2>
+  <p>HTML • CSS • JavaScript • UI/UX • Responsive Design</p>
+</section>
+
+<section>
+  <h2>Contact</h2>
+  <p>Email: your@email.com</p>
+  <p>WhatsApp: +65 XXXX XXXX</p>
+</section>
+
+<footer>
+  <p>© 2026 Hasan</p>
+</footer>
+
+</body>
+</html>
